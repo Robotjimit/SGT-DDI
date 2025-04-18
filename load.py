@@ -60,7 +60,7 @@ def featurize_edges(mol, add_self_loop=False):
     return {'dist': torch.tensor(feats).reshape(-1, 1).float()}
 
 with np.load('../data1/data.npz') as data:
-    # 假设data中包含drug_id, fps, unimol
+   
     drug_ids = data['drug']
     fps = data['fps']
     unimols = data['unimol']
@@ -69,17 +69,9 @@ df_drugs_smiles = pd.read_csv('../data1/drugbank/drug_smiles.csv')
 drug_id_mol_graph = {}
 i = 0
 for drug_id in drug_ids:
-    # 获取对应的 SMILES 序列
+    
     smiles = df_drugs_smiles.loc[df_drugs_smiles['drug_id'] == drug_id, 'smiles'].iloc[0]
-    # 将 graph 添加到字典中
-    # graph = smiles_to_complete_graph(
-    #     smiles, add_self_loop=True, node_featurizer=featurize_atoms,
-    #     edge_featurizer=partial(featurize_edges, add_self_loop=True))
-    #
-    # spd, path = shortest_dist(graph, root=None, return_paths=True)
-    # graph.ndata["spd"] = spd
-    # graph.ndata["path"] = path
-    # # print(graph)
+    
     drug_id_mol_graph[drug_id] = (unimols[i], smiles)
     i += 1
 
@@ -245,7 +237,5 @@ class DrugDataset(Dataset):
         pass
 class DrugDataLoader(DataLoader):
     def __init__(self, data, task=None, **kwargs):
-        # # 如果没有传入collate_fn，就使用data的默认collate_fn
-        # collate_fn = data.multiclass_collate_fn if task is not None else data.collate_fn
         super().__init__(data, collate_fn=data.collate_fn, **kwargs)
 
