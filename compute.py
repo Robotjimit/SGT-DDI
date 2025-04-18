@@ -29,54 +29,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-class FocalLoss(nn.Module):
-    def __init__(self, gamma=2.0, reduction='mean'):
-        """
-        初始化 Focal Loss。
-        参数：
-            gamma (float): 调节易分类样本的抑制强度。
-            alpha (list or float, optional): 类别权重。如果为 None，则权重均为 1。
-            reduction (str): 对损失的归约方式，可选值为 'none', 'mean', 'sum'。
-        """
-        super(FocalLoss, self).__init__()
-        self.gamma = gamma
-        self.reduction = reduction
 
-
-
-    def forward(self, logits, targets):
-        """
-        前向传播计算 Focal Loss。
-        参数：
-            logits (Tensor): 模型的原始输出（未经过 softmax），形状为 (N, C)。
-            targets (list): 真实标签，形状为 (N,)。
-        返回：
-            loss (Tensor): 计算的 Focal Loss。
-        """
-        targets = torch.tensor(targets, dtype=torch.long, device=logits.device)
-
-        probs = F.softmax(logits, dim=1)  # 形状为 (N, C)
-
-        targets_one_hot = F.one_hot(targets, num_classes=logits.size(1)).float()  # 转换为 one-hot 编码
-
-        probs_target = (probs * targets_one_hot).sum(dim=1)  # 形状为 (N,)
-
-        # # 计算 focal loss 的加权项
-        focal_weight = (1 - probs_target) ** self.gamma
-
-        # 计算交叉熵
-        ce_loss = -torch.log(probs_target)
-
-        # 结合 focal loss 和交叉熵
-        loss =  focal_weight * ce_loss
-
-        # 根据 reduction 参数进行归约
-        if self.reduction == 'mean':
-            return loss.mean()
-        elif self.reduction == 'sum':
-            return loss.sum()
-        else:
-            return loss
 
 def do_compute(batch, device, model):
     tri, label = batch
