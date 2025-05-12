@@ -33,7 +33,7 @@ class smile(object):
 
         ddi = pd.read_csv('../data1/drugbank/ddis.csv')
         train_tup = [(h, t, r) for h, t, r in zip(ddi['d1'], ddi['d2'], ddi['type'])]
-        train_tup, val_tup,test_tup = split_train_valid(train_tup, 42, val_ratio=0.1,test_ratio=0.1)
+        train_tup, val_tup,test_tup = split_train_valid(train_tup, 42, val_ratio=0.2,test_ratio=0.2)
 
 
         args = self.batch_size, self.epoches, self.num_workers, fold, self.model_path,task
