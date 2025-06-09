@@ -2,7 +2,7 @@
 
 Accurate prediction of drug-drug interactions (DDIs) is critical for enhancing therapeutic safety and efficacy. However, current computational approaches predominantly rely on single-modality representations of drug structures, neglecting complementary information across distinct structural hierarchies. This oversight compromises predictive generalizability for novel compounds. To address this limitation, we propose SGT-DDI, a multimodal learning framework that synergistically integrates three-dimensional (3D) geometric and two-dimensional (2D) molecular substructure features through a hierarchical Transformer architecture. Our model employs a spatial geometry encoder to capture atomic-level 3D conformational properties and a graph transformer network to extract 2D topological patterns. These cross-modal representations are unified via multi-head attention mechanisms to generate context-aware drug embeddings, enabling simultaneous prediction of interaction occurrence and specific pharmacological effects. After evaluation on the DrugBank dataset, SGT-DDI achieves the best performance with an accuracy of 97.23% (S1) in the task of seen drugs, 72.81% (S2) and 52.65% (S3) in tasks of unseen drugs, indicating excellent generalization to them. Ablation studies validate the necessity of both structural encoding modules and cross-modal fusion mechanisms. Case analyses further reveal interpretable attention patterns that highlight critical interaction-determining substructures, corroborating the model's reliability for predicting interactions involving unknown drugs.
 ## Framework
-
+![img](./Fig1.tif)
 ## File list
 
 - compute.py: The Folder contains the trained model of DMFF-DTA.
@@ -38,5 +38,5 @@ python transductive.py
 - torch_geometric==2.3.1
 - tqdm==4.65.0
 
-  ##Citation
+##Citation
   Coming Soon
