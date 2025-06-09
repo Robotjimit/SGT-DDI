@@ -38,6 +38,6 @@ python transductive.py
 - torch_geometric==2.3.1
 - tqdm==4.65.0
 
-##Citation
+## Citation
 
 Coming Soon
