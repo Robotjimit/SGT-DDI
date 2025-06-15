@@ -28,6 +28,12 @@ tar -zxvf data.tar.gz
 ~~~
 python transductive.py
 ~~~
+### Step 3: Switch to your data
+
+~~~
+python transductive.py
+~~~
+
 ## Requirements
 
 - networkx==3.1
