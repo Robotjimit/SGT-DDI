@@ -29,7 +29,7 @@ tar -zxvf data.tar.gz
 python transductive.py
 ~~~
 ### Step 3: Switch to your data
-
+First, add your data under `Data`.Then obtain `data.npz` according to `process.py`
 ~~~
 python transductive.py
 ~~~
