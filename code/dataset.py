@@ -59,13 +59,12 @@ def featurize_edges(mol, add_self_loop=False):
                 feats.append(float(distance_matrix[i, j]))
     return {'dist': torch.tensor(feats).reshape(-1, 1).float()}
 
-with np.load('../data1/data.npz') as data:
+with np.load('../data/data.npz') as data:
    
     drug_ids = data['drug']
-    fps = data['fps']
     unimols = data['unimol']
 
-df_drugs_smiles = pd.read_csv('../data1/drugbank/drug_smiles.csv')
+df_drugs_smiles = pd.read_csv('../data/drugbank/drug_smiles.csv')
 drug_id_mol_graph = {}
 i = 0
 for drug_id in drug_ids:
