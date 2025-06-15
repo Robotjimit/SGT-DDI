@@ -29,9 +29,15 @@ tar -zxvf data.tar.gz
 python transductive.py
 ~~~
 ### Step 3: Switch to your data
-First, add your data under `Data`.Then obtain `data.npz` according to `process.py`
+First, add your data under `Data` and obtain `data.npz` according to `process.py`
+Then you need to modify the following contents in the `dataset.py`
 ~~~
-python transductive.py
+with np.load('../data/data.npz') as data:
+   
+    drug_ids = data['drug']
+    unimols = data['unimol']
+
+df_drugs_smiles = pd.read_csv('../data/drugbank/drug_smiles.csv')
 ~~~
 
 ## Requirements
