@@ -4,12 +4,13 @@ Accurate prediction of drug-drug interactions (DDIs) is critical for enhancing t
 ## Framework
 ![img](./Fig1.jpg)
 ## File list
-
-- compute.py: The Folder contains the trained model of DMFF-DTA.
-- load.py: The code for data preprocessing.
-- model.py: The code about model.
-- transductive.py: The code about transductive setting.
-- inductive.py: The code about inductive setting.
+-data
+-code
+ - compute.py: The Folder contains the trained model of DMFF-DTA.
+ - load.py: The code for data preprocessing.
+ - model.py: The code about model.
+ - transductive.py: The code about transductive setting.
+ - inductive.py: The code about inductive setting.
 
 ## Dataset
 
