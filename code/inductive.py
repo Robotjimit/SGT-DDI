@@ -7,7 +7,7 @@ import torch
 import time
 import time as t
 from prettytable import PrettyTable
-from load import DrugDataset, DrugDataLoader
+from dataset import DrugDataset, DrugDataLoader
 from model import model
 import pandas as pd
 
