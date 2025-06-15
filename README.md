@@ -29,9 +29,9 @@ tar -zxvf data.tar.gz
 python transductive.py
 ~~~
 ### Step 3: Switch to your data
-First, add your data under `data` and obtain `data.npz` according to `process.py`
-Your data contains the `d1`,`d2`,`type` column
-Then you need to modify the following contents in the `dataset.py`
+First, add your data under `data` and obtain `data.npz` according to `process.py`.
+Your data contains the `d1`,`d2`,`type` column.
+Then you need to modify the following contents in the `dataset.py`.
 ~~~
 with np.load('../data/data.npz') as data:
    
